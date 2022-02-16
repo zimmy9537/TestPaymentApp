@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivityForResult(intent, REQUEST_CODE);
                     }
                     else{
-                        Toast.makeText(MainActivity.this, "not here", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "app not present or not upi ready", Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivityForResult(intent, REQUEST_CODE);
                     }
                     else{
-                        Toast.makeText(MainActivity.this, "not here", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "app not present or not upi ready", Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
