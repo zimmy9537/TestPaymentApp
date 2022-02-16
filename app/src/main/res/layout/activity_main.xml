@@ -8,15 +8,6 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="5dp"
-        android:hint="Name" />
-
-    <EditText
         android:id="@+id/amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,15 +16,6 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:hint="Amount" />
-
-    <EditText
-        android:id="@+id/upiId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:hint="Upi id" />
 
     <EditText
         android:id="@+id/description"
