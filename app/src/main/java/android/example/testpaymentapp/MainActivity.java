@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView transactionStatus;
 
-    String rawString="upi://pay?pa=paytmqr281005050101mm617cyacrl1@paytm&pn=Paytm%20Merchant&mc=5499&mode=02&orgid=000000&paytmqr=281005050101MM617CYACRL1&sign=MEQCID0NFi3MYLXf8Yqjqwp7AqyIM7K0nlnQNBmke8X6Ou0fAiBErCzcP25K2wUYvXyt8nJG2OOqoDEAYyVkFKVjhloZYQ==";
+    String rawString= "upi://pay?pa=paytmqr281005050101mm617cyacrl1@paytm&pn=Paytm%20Merchant&mc=5499&mode=02&orgid=000000&paytmqr=281005050101MM617CYACRL1&sign=MEQCID0NFi3MYLXf8Yqjqwp7AqyIM7K0nlnQNBmke8X6Ou0fAiBErCzcP25K2wUYvXyt8nJG2OOqoDEAYyVkFKVjhloZYQ==";
     String upiId = "paytmqr281005050101mm617cyacrl1@paytm";
     String merchantId = "JsuLrn83183937545946";
     String accountName = "SAHGAL KUMAR";
@@ -66,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
         upiApps.add(new String(GOOGLE_PAY));
         upiApps.add(new String(PHONE_PE));
         upiApps.add(new String(BHIM_UPI));
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rawString));
-        intent.setData(Uri.parse(upiId));
 
         googlePay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,8 +75,12 @@ public class MainActivity extends AppCompatActivity {
                     String p=GOOGLE_TEZ_PACKAGE_NAME;
                     if(isAppInstalled(p)&&isUpiReady(p)) {
 
-                        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(rawString));
-                        i.setData(Uri.parse(rawString));
+                        rawString= "upi://pay?pa=paytmqr281005050101mm617cyacrl1@paytm&pn=Paytm%20Merchant&mc=5499&mode=02&am=1.0&tn=noteIsHere&orgid=000000&paytmqr=281005050101MM617CYACRL1&sign=MEQCID0NFi3MYLXf8Yqjqwp7AqyIM7K0nlnQNBmke8X6Ou0fAiBErCzcP25K2wUYvXyt8nJG2OOqoDEAYyVkFKVjhloZYQ==";
+
+                        Toast.makeText(MainActivity.this, "amount 1.0 default", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rawString));
+                        intent.setData(Uri.parse(rawString));
                         intent.setPackage(p);
                         startActivityForResult(intent, REQUEST_CODE);
                     }
@@ -96,6 +98,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!viewsEmpty()) {
+
+                    String p=PHONE_PE;
+                    if(isAppInstalled(p)&&isUpiReady(p)) {
+
+                        rawString= "upi://pay?pa=paytmqr281005050101mm617cyacrl1@paytm&pn=Paytm%20Merchant&mc=5499&mode=02&am=1.0&tn=noteIsHere&orgid=000000&paytmqr=281005050101MM617CYACRL1&sign=MEQCID0NFi3MYLXf8Yqjqwp7AqyIM7K0nlnQNBmke8X6Ou0fAiBErCzcP25K2wUYvXyt8nJG2OOqoDEAYyVkFKVjhloZYQ==";
+
+                        Toast.makeText(MainActivity.this, "amount 1.0 default", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(rawString));
+                        intent.setData(Uri.parse(rawString));
+                        intent.setPackage(p);
+                        startActivityForResult(intent, REQUEST_CODE);
+
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this, "app not installed or not upi ready", Toast.LENGTH_SHORT).show();
+                    }
+
                 } else {
                     Toast.makeText(MainActivity.this, "edittext empty", Toast.LENGTH_SHORT).show();
                 }
@@ -106,6 +126,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!viewsEmpty()) {
+
+                    String p=BHIM_UPI;
+                    if(isAppInstalled(p)&&isUpiReady(p)) {
+
+                        rawString= "upi://pay?pa=paytmqr281005050101mm617cyacrl1@paytm&pn=Paytm%20Merchant&mc=5499&mode=02&am=1.0&tn=noteIsHere&orgid=000000&paytmqr=281005050101MM617CYACRL1&sign=MEQCID0NFi3MYLXf8Yqjqwp7AqyIM7K0nlnQNBmke8X6Ou0fAiBErCzcP25K2wUYvXyt8nJG2OOqoDEAYyVkFKVjhloZYQ==";
+
+                        Toast.makeText(MainActivity.this, "amount 1.0 default", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rawString));
+                        intent.setData(Uri.parse(rawString));
+                        intent.setPackage(p);
+                        startActivityForResult(intent, REQUEST_CODE);
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this, "app not present or not upi ready", Toast.LENGTH_SHORT).show();
+                    }
+
+                } else {
+                    Toast.makeText(MainActivity.this, "edittext empty", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -119,13 +158,18 @@ public class MainActivity extends AppCompatActivity {
                     String p=PAYTM;
                     if(isAppInstalled(p)&&isUpiReady(p)) {
 
-                        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(rawString));
-                        i.setData(Uri.parse(rawString));
+                        rawString= "upi://pay?pa=paytmqr281005050101mm617cyacrl1@paytm&pn=Paytm%20Merchant&mc=5499&mode=02&am=1.0&tn=noteIsHere&orgid=000000&paytmqr=281005050101MM617CYACRL1&sign=MEQCID0NFi3MYLXf8Yqjqwp7AqyIM7K0nlnQNBmke8X6Ou0fAiBErCzcP25K2wUYvXyt8nJG2OOqoDEAYyVkFKVjhloZYQ==";
+
+                        Toast.makeText(MainActivity.this, "amount 1.0 default", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(rawString));
+                        intent.setData(Uri.parse(rawString));
                         intent.setPackage(p);
                         startActivityForResult(intent, REQUEST_CODE);
+
                     }
                     else{
-                        Toast.makeText(MainActivity.this, "app not present or not upi ready", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "app not installed or not upi ready", Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
