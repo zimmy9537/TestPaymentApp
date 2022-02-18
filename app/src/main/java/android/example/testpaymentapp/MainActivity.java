@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
                         rawString= "upi://pay?pa=paytmqr281005050101mm617cyacrl1@paytm&pn=Paytm%20Merchant&mc=5499&mode=02&am=1.0&tn=noteIsHere&orgid=000000&paytmqr=281005050101MM617CYACRL1&sign=MEQCID0NFi3MYLXf8Yqjqwp7AqyIM7K0nlnQNBmke8X6Ou0fAiBErCzcP25K2wUYvXyt8nJG2OOqoDEAYyVkFKVjhloZYQ==";
 
+
                         Toast.makeText(MainActivity.this, "amount 1.0 default", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(rawString));
