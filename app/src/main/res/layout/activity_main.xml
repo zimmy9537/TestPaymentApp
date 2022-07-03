@@ -7,24 +7,56 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Select the base string"
+        android:textSize="22sp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp">
+
+        <RadioButton
+            android:id="@+id/googlePayRb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Google pay" />
+
+        <RadioButton
+            android:id="@+id/paytmRb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PayTm" />
+
+        <RadioButton
+            android:id="@+id/phonePeRb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PhonePe" />
+
+        <RadioButton
+            android:id="@+id/bharatPeRb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BharatPe" />
+
+    </RadioGroup>
+
     <EditText
         android:id="@+id/amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:inputType="numberDecimal"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
-        android:hint="Amount" />
-
-    <EditText
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:hint="Description" />
+        android:hint="Amount"
+        android:inputType="numberDecimal" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,26 +74,22 @@
         android:layout_gravity="center"
         android:text="Google Pay" />
 
-    <Button
-        android:id="@+id/payTm"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="or"
+        android:textSize="22sp"
         android:layout_gravity="center"
-        android:text="Paytm" />
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 
     <Button
-        android:id="@+id/amazonPayUpi"
+        android:id="@+id/bhimUpi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="BHIM" />
-
-    <Button
-        android:id="@+id/phonePe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Phone pe" />
+        android:text="Bhim Upi"
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/transaction_status"
