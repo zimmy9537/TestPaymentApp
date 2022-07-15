@@ -27,7 +27,14 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
-    private int UPI_REQUEST_CODE = 123;
+    private final int UPI_REQUEST_CODE = 123;
+    private final int GOOGLE_PAY = 1;
+    private final int PAYTM = 2;
+    private final int PHONE_PE = 3;
+    private final int BHARAT_PE = 4;
+    private final int AMAZON_PAY_UPI = 5;
+    private final int AIRTEL_PAY = 6;
+    private static int MERCHANT_TYPE = 1;
 
     private RadioGroup payGroup;
     private RadioButton payRadio;
@@ -42,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
     private final String googlePayBaseString = "upi://pay?pa=9988890048@okbizaxis&pn=N.K MEDICOS&mc=5912&aid=uGICAgIC3joqcAQ&tr=BCR2DN6TR6SKRMR2";
     private final String paytmBaseString = "upi://pay?pa=paytmqr2810050501011gj3dtvouykl@paytm&pn=Paytm Merchant&mc=5499&mode=02&orgid=000000&paytmqr=2810050501011GJ3DTVOUYKL&sign=MEQCID5V1zKeK5cPAy1nQFPRffDc1VicVDEje9iL96JgZfiUAiB+CgEV6kbnm49jJ5G9yNi1aZj32eJibgjWkyf3EzDq4g==";
     private final String phonePeBaseString = "upi://pay?mode=02&pa=Q355808006@ybl&purpose=00&mc=0000&pn=PhonePeMerchant&orgid=180001&sign=MEUCIQCgOK+Hp9+axAqSCvciooSDb7vWekq7SxgvHs09NCNwLwIgdgg7FDGQEySDDAuNM6cCKG4V+LvZ4tbTA2ZmCWpo0+Y=";
-    private final String bharatPeBaseString = "upi://pay?pa=BHARATPE90718988349@yesbankltd&pn=BharatPe Merchant&cu=INR&tn=Verified Merchant";
-
-    private String amazonPayUpi = "upi://pay?pa=9988890048@okbizaxis&pn=N.K MEDICOS&mc=5912&aid=uGICAgIC3joqcAQ&tr=BCR2DN6TR6SKRMR2";
+    private final String bharatPeBaseString = "upi://pay?pa=BHARATPE.0853260667@icici&pn=BharatPe Merchant&cu=INR&tn=Verified Merchant";
+    private final String amazonPayBaseString = "upi://pay?pa=AMZN0000127015@apl&pn=AmazonPay Merchant";
+    private final String airtelPayBaseString = "upi://pay?pa=a163545q@mairtel&pn=AirtelM a163545q@mairtel&tn=Payment made to Merchant&mc=7299";
 
     private String baseUpiString = googlePayBaseString;
 
@@ -62,12 +69,16 @@ public class MainActivity extends AppCompatActivity {
         bhimUpi = findViewById(R.id.bhimUpi);
         payGroup = findViewById(R.id.radioGroup);
 
-
         googlePay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 checkRadioGroup();
+
+                if (MERCHANT_TYPE == GOOGLE_PAY) {
+                    Toast.makeText(MainActivity.this, "This Merchant does not accecpt google pay", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if (!isAppInstalled(googlePayPackage)) {
                     Toast.makeText(MainActivity.this, "Google pay not installed ", Toast.LENGTH_SHORT).show();
@@ -80,11 +91,9 @@ public class MainActivity extends AppCompatActivity {
                 baseUpiString = baseUpiString + "&am=";
                 baseUpiString = baseUpiString + amountEt.getText().toString().trim();
 
-                Log.v(MainActivity.class.getSimpleName(), "base " + baseUpiString);
-
                 Log.v(MainActivity.class.getSimpleName(), "amount " + amountEt.getText().toString());
 
-                Log.v(MainActivity.class.getSimpleName(), "base " + baseUpiString);
+                Log.v(MainActivity.class.getSimpleName(), "final string " + baseUpiString);
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(baseUpiString));
@@ -113,11 +122,9 @@ public class MainActivity extends AppCompatActivity {
                 baseUpiString = baseUpiString + "&am=";
                 baseUpiString = baseUpiString + amountEt.getText().toString().trim();
 
-                Log.v(MainActivity.class.getSimpleName(), "base " + baseUpiString);
+                Log.v("Gastos_app", "amount " + amountEt.getText().toString());
 
-                Log.v(MainActivity.class.getSimpleName(), "amount " + amountEt.getText().toString());
-
-                Log.v(MainActivity.class.getSimpleName(), "base " + baseUpiString);
+                Log.v("Gastos_app", "final string " + baseUpiString);
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(baseUpiString));
@@ -137,19 +144,33 @@ public class MainActivity extends AppCompatActivity {
         switch (payRadio.getText().toString()) {
 
             case "Google pay":
+                MERCHANT_TYPE = GOOGLE_PAY;
                 baseUpiString = googlePayBaseString;
                 break;
 
             case "PayTm":
+                MERCHANT_TYPE = PAYTM;
                 baseUpiString = paytmBaseString;
                 break;
 
             case "PhonePe":
+                MERCHANT_TYPE = PHONE_PE;
                 baseUpiString = phonePeBaseString;
                 break;
 
             case "BharatPe":
+                MERCHANT_TYPE = BHARAT_PE;
                 baseUpiString = bharatPeBaseString;
+                break;
+
+            case "Amazon Pay Upi":
+                MERCHANT_TYPE = AMAZON_PAY_UPI;
+                baseUpiString = amazonPayBaseString;
+                break;
+
+            case "Airtel Pay":
+                MERCHANT_TYPE = AIRTEL_PAY;
+                baseUpiString = airtelPayBaseString;
                 break;
         }
     }

@@ -46,6 +46,18 @@
             android:layout_height="wrap_content"
             android:text="BharatPe" />
 
+        <RadioButton
+            android:id="@+id/amazonPayRb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amazon Pay Upi" />
+
+        <RadioButton
+            android:id="@+id/airtel_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Airtel Pay" />
+
     </RadioGroup>
 
     <EditText
